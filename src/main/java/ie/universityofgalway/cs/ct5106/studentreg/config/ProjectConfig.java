@@ -1,8 +1,10 @@
-package ie.universityofgalway.cs.ct5106.studentreg.infrastructure;
+package ie.universityofgalway.cs.ct5106.studentreg.config;
 
 import ie.universityofgalway.cs.ct5106.studentreg.application.enrolment.*;
 import ie.universityofgalway.cs.ct5106.studentreg.application.student.*;
 import ie.universityofgalway.cs.ct5106.studentreg.domain.student.StudentRepository;
+import ie.universityofgalway.cs.ct5106.studentreg.infrastructure.student.StudentJPARepository;
+import ie.universityofgalway.cs.ct5106.studentreg.infrastructure.student.StudentPersistenceAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,9 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class ProjectConfig {
 
 
-    @Bean
-    public StudentRepository studentRepository() {
-        return new InMemoryStudentRepository();
+//    @Bean
+//    public StudentRepository studentRepository() {
+//        return new InMemoryStudentRepository();
+//    }
+
+    public StudentRepository studentRepository(StudentJPARepository StudentJPARepository) {
+        return new StudentPersistenceAdapter(StudentJPARepository);
     }
 
     @Bean

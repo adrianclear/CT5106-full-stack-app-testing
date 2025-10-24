@@ -31,6 +31,11 @@ public class Student {
         return new Student(StudentId.random(), name, email);
     }
 
+    public static Student createWithId(StudentId id, StudentName name, EmailAddress email) {
+        // enforce invariants here if needed
+        return new Student(id, name, email);
+    }
+
     public StudentId id() {
         return id;
     }
