@@ -1,28 +1,30 @@
+# label for your workflow — it appears in the Actions tab on GitHub
 name: CI - Build and Test
 
-# When to run the workflow
+# When to run the workflow - the triger
 on:
-  push:
+  push:   #Run when someone pushes to the main branch.
     branches: [ main ]   # specify whichever branches you want to trigger the workflow
-  pull_request:
+  pull_request: #Run when a pull request is opened against the main branch.
     branches: [ main ]
 
+# Define the jobs to be run in this workflow
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build:  # Define a job named "build"
+    runs-on: ubuntu-latest  # The type of runner to run the job on. Other options include windows-latest, macos-latest, etc.
 
     steps:
       # Step 1: Check out your code
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout repository #steps can have names to make them easier to identify
+        uses: actions/checkout@v4  # This action checks out your repository under $GITHUB_WORKSPACE, so your job can access it
 
       # Step 2: Set up Java (for Spring)
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v4  # This action sets up a Java Development Kit (JDK) environment for use in actions by downloading and installing the specified version of Java.
         with:
-          distribution: temurin
-          java-version: 21
+          distribution: temurin # Use the Eclipse Temurin distribution of Java
+          java-version: 21      # Specify the Java version to use
 
       # Step 3: Build and run tests
       - name: Build and test backend
-        run: ./mvnw test
+        run: mvn -B clean verify # Use Maven to clean the project and run tests in batch mode (-B)
