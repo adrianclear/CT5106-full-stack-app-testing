@@ -5,15 +5,12 @@ import ie.universityofgalway.cs.ct5106.studentreg.application.student.AddStudent
 import ie.universityofgalway.cs.ct5106.studentreg.application.student.DeleteStudentUseCase;
 import ie.universityofgalway.cs.ct5106.studentreg.application.student.UpdateStudentDetailsUseCase;
 import ie.universityofgalway.cs.ct5106.studentreg.application.student.ViewAllStudentsUseCase;
-import ie.universityofgalway.cs.ct5106.studentreg.application.student.dto.AddStudentCommand;
 import ie.universityofgalway.cs.ct5106.studentreg.application.student.dto.AddStudentResponse;
 import ie.universityofgalway.cs.ct5106.studentreg.infrastructure.rest.StudentController;
 import ie.universityofgalway.cs.ct5106.studentreg.infrastructure.rest.dto.AddStudentRequest;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,7 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(StudentController.class)
-class StudentControllerIntegrationTest {
+class StudentControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
