@@ -28,3 +28,6 @@ jobs:
       # Step 3: Build and run tests
       - name: Build and test backend
         run: mvn -B clean verify # Use Maven to clean the project and run tests in batch mode (-B)
+
+      - name: Deploy to Render
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
