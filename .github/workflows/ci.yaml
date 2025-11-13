@@ -37,13 +37,13 @@ jobs:
       - name: Log in to GHCR
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
 
-  # Build Docker image (uses prebuilt JAR)
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository }}:latest .
+        run: docker build -t ghcr.io/adrianclear/ct5106-full-stack-app-testing:latest .
 
-  # Push image
+
+    # Push image
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository }}:latest
+        run: docker push ghcr.io/adrianclear/ct5106-full-stack-app-testing:latest
 
   # Trigger Render deploy (optional)
       - name: Deploy to Render
