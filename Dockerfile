@@ -1,10 +1,11 @@
-FROM eclipse-temurin:17-jdk
+# Runtime-only image
+FROM eclipse-temurin:21-jre
 
-# Copy everything (including Maven wrapper)
-COPY . .
+# Set working directory
+WORKDIR /app
 
-# Build the app
-RUN ./mvnw clean package -DskipTests
+# Copy prebuilt JAR from CI output into the image
+COPY target/studentreg-0.0.1-SNAPSHOT.jar app.jar
 
-# Run the JAR explicitly by name
-CMD ["java", "-jar", "target/studentreg-0.0.1-SNAPSHOT.jar"]
+# Run the JAR
+CMD ["java", "-jar", "app.jar"]
