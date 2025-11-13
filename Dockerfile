@@ -6,6 +6,6 @@ WORKDIR /app
 
 # Copy prebuilt JAR from CI output into the image
 COPY target/studentreg-0.0.1-SNAPSHOT.jar app.jar
-
+EXPOSE 8080
 # Run the JAR
 CMD ["java", "-jar", "app.jar"]
