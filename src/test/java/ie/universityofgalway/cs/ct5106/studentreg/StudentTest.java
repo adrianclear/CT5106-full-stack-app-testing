@@ -80,15 +80,15 @@ class StudentTest {
                 .hasMessageContaining("not enrolled");
     }
 
-    // Failing test example to illustrate test failure reporting
-    @Test
-    void failingTestExample_ShouldFailForDemo() {
-        Student student = Student.create(
-                StudentName.of("John", "Doe"),
-                EmailAddress.of("john@example.com")
-        );
-
-        // This will fail: student has no enrollments yet
-        assertThat(student.enrollments()).hasSize(1);
-    }
+//    // Failing test example to illustrate test failure reporting
+//    @Test
+//    void failingTestExample_ShouldFailForDemo() {
+//        Student student = Student.create(
+//                StudentName.of("John", "Doe"),
+//                EmailAddress.of("john@example.com")
+//        );
+//
+//        // This will fail: student has no enrollments yet
+//        assertThat(student.enrollments()).hasSize(1);
+//    }
 }
